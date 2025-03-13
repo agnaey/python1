@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+        <input type="number" name="experience" placeholder="Experience (years)" required><br>
+        <select name="designation" required>
+            <option value="">Select Designation</option>
+            {% for designation in designations %}
+                <option value="{{ designation.id }}">{{ designation.name }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="file" name="profile_photo"><br>
+        <button type="submit">Register</button>
+    </form>
+    <a href="{% url 'login' %}">Already have an account? Login</a>
+</body>
+</html>

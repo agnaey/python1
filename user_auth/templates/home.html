@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Experience: {{ user.experience }} years</p>
+    <p>Designation: {{ user.designation.name }}</p>
+    {% if user.profile_photo %}
+        <img src="{{ user.profile_photo.url }}" alt="Profile Photo" width="100">
+    {% endif %}
+    <br><br>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
