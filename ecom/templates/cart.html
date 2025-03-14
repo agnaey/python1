@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% for item in cart_items %}
+        <div>
+            <h2>{{ item.product.name }}</h2>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: ${{ item.product.price }}</p>
+            <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+        </div>
+    {% endfor %}
+    <a href="{% url 'checkout' %}">Checkout</a>
+</body>
+</html>

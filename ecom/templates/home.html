@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Store</h1>
+    <a href="{% url 'product_list' %}">Browse Products</a>
+    <a href="{% url 'ordered_products' %}">Order</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'cart_view' %}">View Cart</a>
+        <a href="{% url 'logout' %}">Logout</a>
+
+    {% endif %}
+</body>
+</html>

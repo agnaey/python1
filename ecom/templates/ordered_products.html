@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ordered Products</title>
+</head>
+<body>
+    <h1>Your Orders</h1>
+    {% for order in orders %}
+        <div>
+            <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+            <p><strong>Phone:</strong> {{ order.phone }}</p>
+            <p><strong>Address:</strong> {{ order.address }}</p>
+            <p><strong>Total Amount:</strong> ${{ order.total_amount }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>No orders found.</p>
+    {% endfor %}
+</body>
+</html>
