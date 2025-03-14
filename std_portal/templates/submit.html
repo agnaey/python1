@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Submit Assignment</title></head>
+<body>
+    <h1>Submit Assignment - {{ assignment.title }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" required><br>
+    
+        <label>Description:</label>
+        <textarea name="description"></textarea><br>
+    
+        <label>Due Date:</label>
+        <input type="date" name="due_date" required><br>
+    
+        <button type="submit">Add Assignment</button>
+    </form>
+    
+</body>
+</html>

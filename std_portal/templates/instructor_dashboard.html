@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to the Instructor Dashboard</h2>
+
+    <!-- Add New Assignment -->
+    <a href="{% url 'add_assignment' %}">Add New Assignment</a>
+
+    <h3>Your Assignments</h3>
+    {% if assignments %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for assignment in assignments %}
+            <tr>
+                <td>{{ assignment.title }}</td>
+                <td>{{ assignment.description }}</td>
+                <td>{{ assignment.due_date }}</td>
+                <td>
+                    <a href="{% url 'edit_assignment' assignment.id %}"> Edit</a> |
+                    <a href="{% url 'delete_assignment' assignment.id %}" onclick="return confirm('Are you sure?')"> Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No assignments yet.</p>
+    {% endif %}
+
+    <h3>Student Submissions</h3>
+    {% if submissions %}
+        <table>
+            <tr>
+                <th>Student</th>
+                <th>Assignment</th>
+                <th>Submitted At</th>
+                <th>Grade</th>
+                <th>Feedback</th>
+                <th>Actions</th>
+            </tr>
+            {% for submission in submissions %}
+            <tr>
+                <td>{{ submission.student.user.username }}</td>
+                <td>{{ submission.assignment.title }}</td>
+                <td>{{ submission.submitted_at }}</td>
+                <td>{{ submission.grade|default:"Not Graded" }}</td>
+                <td>{{ submission.feedback|default:"No Feedback" }}</td>
+                <td>
+                    <a href="{% url 'grade_submission' submission.id %}"> Grade</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No submissions yet.</p>
+    {% endif %}
+
+</body>
+</html>

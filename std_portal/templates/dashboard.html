@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+    <h1>Student Dashboard</h1>
+    <h2>Available Assignments</h2>
+    <ul>
+        {% for assignment in assignments %}
+            <li>{{ assignment.title }} - <a href="{% url 'submit_assignment' assignment.id %}">Submit</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Submission History</h2>
+    <ul>
+        {% for submission in submissions %}
+            <li>{{ submission.assignment.title }} - {{ submission.submitted_at }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
