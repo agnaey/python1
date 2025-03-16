@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" value="{{ book.title|default:'' }}" placeholder="Title" required>
+        <input type="text" name="author" value="{{ book.author|default:'' }}" placeholder="Author" required>
+        <input type="date" name="published_date" value="{{ book.published_date|default:'' }}" required>
+        <input type="number" name="quantity" value="{{ book.quantity|default:1 }}" placeholder="Quantity" required>
+        <button type="submit">Save</button>
+    </form>
+    
+</body>
+</html>
