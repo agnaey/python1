@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Your Documents</h2>
+    <ul>
+        {% for doc in documents %}
+            <li>{{ doc.title }} - <a href="{{ doc.file.url }}" download>Download</a> - <a href="{% url 'edit_document' doc.id %}">Edit</a> - <a href="{% url 'delete_document' doc.id %}">Delete</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'upload_document' %}">Upload New Document</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
