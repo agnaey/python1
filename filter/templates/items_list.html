@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get">
+        <label for="date">Filter by date (YYYY-MM-DD):</label>
+        <input type="date" name="date" id="date" value="{{ date_filter }}">
+        
+        <label for="order">Sort by:</label>
+        <select name="order" id="order">
+            <option value="">-- Select --</option>
+            <option value="created_at">Oldest First</option>
+            <option value="-created_at">Newest First</option>
+        </select>
+        
+        <button type="submit">Apply</button>
+    </form>
+    
+    <ul>
+    {% for item in items %}
+        <li>{{ item.name }} - {{ item.created_at }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
